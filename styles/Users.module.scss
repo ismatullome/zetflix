@@ -1,5 +1,21 @@
-.user {
+.users {
   h1 {
-    color: red;
+    color: rgb(67, 236, 15);
+  }
+  .user {
+    margin: 20px;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 4px;
+    list-style-type: none;
+  }
+  .user_link {
+    color: white;
+    font-size: 21px;
+    text-decoration: none;
+    padding: 12px;
+    &:hover {
+      background-color: rgb(30, 87, 12);
+    }
   }
 }

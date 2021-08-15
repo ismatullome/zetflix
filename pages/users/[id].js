@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import styles from '../../styles/Users.module.scss'
+import styles from '../../styles/User.module.scss'
 import Container from '../../components/Container'
 
 export default function User({ user }) {

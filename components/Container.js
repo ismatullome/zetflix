@@ -1,5 +1,6 @@
 import Linker from './Linker'
 import Head from 'next/head'
+import styles from '../styles/Container.module.scss'
 
 const MainContainer = ({ children, keywords }) => {
   return (
@@ -8,19 +9,13 @@ const MainContainer = ({ children, keywords }) => {
         <meta keywords={'test ism4t, nextjs' + keywords}></meta>
         <title>Главная страница</title>
       </Head>
-      <div className='navbar'>
+      <div className={styles.navbar}>
         <Linker href={'/'} text='Главная' />
         <Linker href={'/users'} text='Пользователи' />
+        <Linker href={'/about'} text='О нас' />
+        <Linker href={'/contact'} text='Связь с нами' />
       </div>
       <div>{children}</div>
-      <style jsx>
-        {`
-          .navbar {
-            background: orange;
-            padding: 15px;
-          }
-        `}
-      </style>
     </>
   )
 }
