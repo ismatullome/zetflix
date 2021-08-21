@@ -1,0 +1,16 @@
+.div {
+  margin: 40px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .img {
+    border-radius: 50px;
+  }
+
+  h1 {
+    color: red;
+  }
+}

@@ -1,15 +1,16 @@
 .link {
   text-decoration: none;
-  color: rgb(20, 14, 2);
+  color: rgb(255, 255, 255);
   line-height: 60px;
   padding: 5px;
   border-radius: 10px;
-  background-color: rgb(255, 255, 255);
+  background-color: #0d142e;
   font-size: 30px;
   font-weight: bold;
-  margin: 0 10px;
+  margin: 10px;
 }
 .link:hover {
   opacity: 0.8;
-  background-color: rgb(9, 110, 72);
+  background-color: #e9ff70;
+  color: #0d142e;
 }
