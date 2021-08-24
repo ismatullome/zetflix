@@ -29,13 +29,17 @@ function Index({ movies }) {
       <div className={styles.container}>
         {movies.results.map((movie) => (
           <div className={styles.movie}>
-            <img
-              className={styles.img}
-              width='353.5'
-              height='200'
-              src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-              alt='Picture of the author'
-            />
+            <Link href={`/movie/${movie.id}`}>
+              <a>
+                <img
+                  className={styles.img}
+                  width='353.5'
+                  height='200'
+                  src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                  alt='Picture of the author'
+                />
+              </a>
+            </Link>
             <h1 className={styles.title}>{movie.title}</h1>
             <p className={styles.desc}>{movie.overview}</p>
           </div>
