@@ -1,21 +1,25 @@
-.users {
-  h1 {
-    color: rgb(67, 236, 15);
-  }
-  .user {
-    margin: 20px;
-    margin-top: 20px;
-    padding: 5px;
-    border-radius: 4px;
-    list-style-type: none;
-  }
-  .user_link {
-    color: white;
-    font-size: 21px;
-    text-decoration: none;
-    padding: 12px;
-    &:hover {
-      background-color: rgb(30, 87, 12);
-    }
-  }
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Open Sans', verdana, sans-serif;
+}
+.img {
+  border-radius: 5px;
+}
+.title {
+  margin: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+.desc {
+  margin: 10px;
+  color: #a3a3a3;
+  font-size: 13px;
+}
+.movie {
+  // padding: 10px;
+  // margin: 10px;
 }
