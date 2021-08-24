@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Container from '../components/Container'
-import styles from '../styles/top-rated.module.scss'
+import styles from '../styles/popular.module.scss'
 import key from '../config/config'
 import Image from 'next/image'
 
-// const imgSite = 'http://image.tmdb.org/t/p/w500/'
-
 export async function getStaticProps() {
   const res = await fetch(
-    `http://api.themoviedb.org/3/movie/upcoming?api_key=${key}`
+    `http://api.themoviedb.org/3/movie/popular?api_key=${key}`
   )
   const movies = await res.json()
   // console.log(post.results.id)
@@ -23,7 +21,7 @@ export async function getStaticProps() {
     },
   }
 }
-function Index({ movies }) {
+function Movies({ movies }) {
   return (
     <Container keywords={'start main'}>
       <div className={styles.container}>
@@ -45,4 +43,4 @@ function Index({ movies }) {
   )
 }
 
-export default Index
+export default Movies

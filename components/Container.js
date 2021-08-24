@@ -11,8 +11,8 @@ const MainContainer = ({ children, keywords }) => {
       </Head>
       <div className={styles.navbar}>
         <Linker href={'/'} text='Главная' />
-        <Linker href={'/users'} text='Пользователи' />
-        <Linker href={'/about'} text='О нас' />
+        <Linker href={'/top-rated'} text='Top rated' />
+        <Linker href={'/popular'} text='Popular' />
         <Linker href={'/contact'} text='Связь с нами' />
       </div>
       <div>{children}</div>

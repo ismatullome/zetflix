@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Container from '../components/Container'
-import styles from '../styles/Users.module.scss'
+import styles from '../styles/top-rated.module.scss'
 import key from '../config/config'
 import Image from 'next/image'
 
@@ -25,14 +25,14 @@ export async function getStaticProps() {
 }
 function Movies({ movies }) {
   return (
-    <>
+    <Container keywords={'start main'}>
       <div className={styles.container}>
         {movies.results.map((movie) => (
           <div className={styles.movie}>
             <img
               className={styles.img}
-              width='282'
-              height='160'
+              width='353.5'
+              height='200'
               src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
               alt='Picture of the author'
             />
@@ -41,7 +41,7 @@ function Movies({ movies }) {
           </div>
         ))}
       </div>
-    </>
+    </Container>
   )
 }
 
