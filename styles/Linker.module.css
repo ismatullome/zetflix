@@ -2,15 +2,12 @@
   text-decoration: none;
   color: rgb(255, 255, 255);
   line-height: 60px;
-  padding: 5px;
+  padding: 5px 8px;
   border-radius: 10px;
-  background-color: #0d142e;
-  font-size: 30px;
-  font-weight: bold;
   margin: 10px;
 }
 .link:hover {
   opacity: 0.8;
-  background-color: #e9ff70;
-  color: #0d142e;
+  background-color: red;
+  color: #fff;
 }

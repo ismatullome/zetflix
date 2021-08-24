@@ -2,7 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Open Sans', verdana, sans-serif;
 }
 body {
-  background-color: #222;
+  background-color: #141213;
+}
+
+.navbar {
+  margin-bottom: 30px;
 }

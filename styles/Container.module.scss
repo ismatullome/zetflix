@@ -1,8 +1,18 @@
 .navbar {
-  background-color: #333;
+  background-color: black;
   padding: 0 20px;
   height: 60px;
-  width: 800px;
+  width: 100%;
+  margin-bottom: 20px;
   margin: 0 auto;
-  border-radius: 20px;
+  color: red;
+}
+
+.nav_cont {
+  width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  padding: 2px 75px 2px 75px;
+  background: url('../public/logo.png') no-repeat;
 }
