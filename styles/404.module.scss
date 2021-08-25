@@ -6,6 +6,19 @@
   justify-content: center;
   flex-direction: column;
 
+  a {
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;
+    background-color: lightseagreen;
+    padding: 5px 10px;
+    border-radius: 4px;
+    &:hover {
+      // opacity: 0.8;
+      background-color: rgb(39, 233, 223);
+      color: rgb(6, 46, 71);
+    }
+  }
   .img {
     border-radius: 50px;
   }

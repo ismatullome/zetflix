@@ -4,7 +4,7 @@ import styles from '../../styles/id.module.scss'
 
 export default function Movieid() {
   const query = useRouter()
-  const results = query.components['/'].props.pageProps.movies.results
+  const results = query.components['/top-rated'].props.pageProps.movies.results
   console.log(results)
   return (
     <Container>

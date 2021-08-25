@@ -4,6 +4,7 @@ import Container from '../components/Container'
 import styles from '../styles/top-rated.module.scss'
 import key from '../config/config'
 import Image from 'next/image'
+import Head from 'next/head'
 
 // const imgSite = 'http://image.tmdb.org/t/p/w500/'
 
@@ -25,27 +26,29 @@ export async function getStaticProps() {
 }
 function Index({ movies }) {
   return (
-    <Container keywords={'start main'}>
-      <div className={styles.container}>
-        {movies.results.map((movie) => (
-          <div className={styles.movie}>
-            <Link href={`/movie/${movie.id}`}>
-              <a>
-                <img
-                  className={styles.img}
-                  width='353.5'
-                  height='200'
-                  src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-                  alt='Picture of the author'
-                />
-              </a>
-            </Link>
-            <h1 className={styles.title}>{movie.title}</h1>
-            <p className={styles.desc}>{movie.overview}</p>
-          </div>
-        ))}
-      </div>
-    </Container>
+    <>
+      <Container keywords={'start main'}>
+        <div className={styles.container}>
+          {movies.results.map((movie) => (
+            <div className={styles.movie} key={movie.id}>
+              <Link href={`/movie/${movie.id}`}>
+                <a>
+                  <img
+                    className={styles.img}
+                    width='353.5'
+                    height='200'
+                    src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                    alt='Picture of movie'
+                  />
+                </a>
+              </Link>
+              <h1 className={styles.title}>{movie.title}</h1>
+              <p className={styles.desc}>{movie.overview}</p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </>
   )
 }
 

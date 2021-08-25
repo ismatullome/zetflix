@@ -15,6 +15,7 @@ export default function Error() {
           href={'/'}
           text='Вернуть главную страницу'
         />
+        <a href='https:/t.me/ism4t'>Developer</a>
       </div>
     </Container>
   )
