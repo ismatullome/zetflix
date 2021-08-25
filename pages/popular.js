@@ -9,13 +9,9 @@ export async function getStaticProps() {
   const res = await fetch(
     `http://api.themoviedb.org/3/movie/popular?api_key=${key}`
   )
-  const movies = await res.json()
-  const videoUrl = 'https://www.youtube.com/watch?v='
-  // console.log(post.results.id)
-  // console.log(res)
+  // const movies = await res.json()
+  // const videoUrl = 'https://www.youtube.com/watch?v='
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
   return {
     props: {
       movies,

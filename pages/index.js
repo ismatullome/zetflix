@@ -6,18 +6,12 @@ import key from '../config/config'
 import Image from 'next/image'
 import Head from 'next/head'
 
-// const imgSite = 'http://image.tmdb.org/t/p/w500/'
-
 export async function getStaticProps() {
   const res = await fetch(
     `http://api.themoviedb.org/3/movie/upcoming?api_key=${key}`
   )
   const movies = await res.json()
-  // console.log(post.results.id)
-  // console.log(res)
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
   return {
     props: {
       movies,
