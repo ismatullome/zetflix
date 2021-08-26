@@ -1,14 +1,24 @@
 import { useRouter } from 'next/router'
 import Container from '../../components/Container'
 import styles from '../../styles/id.module.scss'
+import key from '../../config/config'
 
-export default function Movieid() {
-  const router = useRouter()
-  const { query } = router.query
+export async function getServerSideProps() {
+  const res = await fetch(
+    `http://api.themoviedb.org/3/movie/upcoming?api_key=${key}`
+  )
+  const data = await res.json()
+
+  return { props: { data } }
+}
+
+export default function Movieid(movies) {
+  const query = useRouter()
+
   return (
     <Container>
       <div className={styles.container}>
-        {results.map((movie) => {
+        {movies.data.results.map((movie) => {
           return movie.id == query.query.id ? (
             <>
               <h1> Movie id: {query.query.id} </h1>
