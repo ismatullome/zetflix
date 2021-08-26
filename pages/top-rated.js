@@ -12,12 +12,7 @@ export async function getStaticProps() {
     `http://api.themoviedb.org/3/movie/top_rated?api_key=${key}`
   )
   const movies = await res.json()
-  // console.log(post.results.id)
-  // console.log(res)
-  console.log(movies.results)
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
   return {
     props: {
       movies,

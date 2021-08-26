@@ -3,9 +3,8 @@ import Container from '../../components/Container'
 import styles from '../../styles/id.module.scss'
 
 export default function Movieid() {
-  const query = useRouter()
-  const results = query.components['/'].props.pageProps.movies.results
-  console.log(results)
+  const router = useRouter()
+  const { query } = router.query
   return (
     <Container>
       <div className={styles.container}>

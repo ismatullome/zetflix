@@ -1,15 +1,23 @@
 import { useRouter } from 'next/router'
 import Container from '../../components/Container'
 import styles from '../../styles/id.module.scss'
+import key from '../../config/config'
 
-export default function Movieid() {
+export async function getServerSideProps() {
+  const res = await fetch(
+    `http://api.themoviedb.org/3/movie/top_rated?api_key=${key}`
+  )
+  const data = await res.json()
+
+  return { props: { data } }
+}
+export default function Movieid(movies) {
   const query = useRouter()
-  const results = query.components['/top-rated'].props.pageProps.movies.results
-  console.log(results)
+
   return (
     <Container>
       <div className={styles.container}>
-        {results.map((movie) => {
+        {movies.data.results.map((movie) => {
           return movie.id == query.query.id ? (
             <>
               <h1> Movie id: {query.query.id} </h1>

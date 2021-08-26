@@ -2,17 +2,27 @@ import { useRouter } from 'next/router'
 import Container from '../../components/Container'
 import styles from '../../styles/id.module.scss'
 import Head from 'next/head'
+import key from '../../config/config'
 
-export default function Movieid() {
+export async function getServerSideProps() {
+  const res = await fetch(
+    `http://api.themoviedb.org/3/movie/popular?api_key=${key}`
+  )
+  const data = await res.json()
+
+  return { props: { data } }
+}
+
+export default function Movieid(movies) {
   const query = useRouter()
-  const results = query.components['/popular'].props.pageProps.movies.results
-  console.log(results)
+  console.log(query)
+  console.log(movies)
 
   return (
     <>
       <Container>
         <div className={styles.container}>
-          {results.map((movie) => {
+          {movies.data.results.map((movie) => {
             return movie.id == query.query.id ? (
               <>
                 <h1>Movie id: {query.query.id} </h1>
@@ -29,14 +39,6 @@ export default function Movieid() {
                   src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                   alt=''
                 />
-                {/* <iframe
-                  width='560'
-                  height='315'
-                  src={`https://www.youtube-nocookie.com/embed/${key}?controls=0`}
-                  title='YouTube video player'
-                  frameborder='0'
-                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                  allowfullscreen></iframe> */}
               </>
             ) : (
               <></>
