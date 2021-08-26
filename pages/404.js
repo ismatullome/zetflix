@@ -3,13 +3,11 @@ import styles from '../styles/404.module.scss'
 import logo from '../public/2323.jpg'
 import Linker from '../components/Linker'
 import Container from '../components/Container'
+import Link from 'next/link'
 
 export default function Error() {
   return (
     <>
-      <div className={styles.div}>
-        <a href='https:/t.me/ism4t'>Developer</a>
-      </div>
       <Container keywords={'users ism4t'}>
         <div className={styles.div}>
           <Linker
@@ -17,6 +15,8 @@ export default function Error() {
             href={'/'}
             text='Вернуть главную страницу'
           />
+
+          <Link href='https:/t.me/ism4t'>Developer</Link>
 
           <Image className={styles.img} src={logo} height={600} width={1000} />
         </div>
