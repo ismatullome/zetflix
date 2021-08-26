@@ -23,8 +23,7 @@ export default function Movieid(movies) {
               <h1> Movie id: {query.query.id} </h1>
               <h1>
                 {' '}
-                {console.log(movie)} {movie.original_title} (
-                {movie.release_date}) watch online!{' '}
+                {movie.original_title} ({movie.release_date}) watch online!{' '}
               </h1>
               <h2> {movie.title} </h2>
               <p> {movie.overview} </p>

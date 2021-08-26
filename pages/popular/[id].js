@@ -15,8 +15,6 @@ export async function getServerSideProps() {
 
 export default function Movieid(movies) {
   const query = useRouter()
-  console.log(query)
-  console.log(movies)
 
   return (
     <>
@@ -28,8 +26,7 @@ export default function Movieid(movies) {
                 <h1>Movie id: {query.query.id} </h1>
                 <h1>
                   {' '}
-                  {console.log(movie)} {movie.original_title} (
-                  {movie.release_date}) watch online!{' '}
+                  {movie.original_title} ({movie.release_date}) watch online!{' '}
                 </h1>
                 <h2> {movie.title} </h2>
                 <p> {movie.overview} </p>
@@ -49,14 +46,3 @@ export default function Movieid(movies) {
     </>
   )
 }
-
-// export async function getServerSideProps() {
-//   // Fetch data from external API
-//   const res = await fetch(
-//     `http://api.themoviedb.org/3/${q.query.id}/videos?api_key=${key}`
-//   )
-//   const data = await res.json()
-//   console.log(data)
-//   // Pass data to the page via props
-//   return { props: { data } }
-// }

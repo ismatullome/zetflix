@@ -5,8 +5,6 @@ import styles from '../styles/top-rated.module.scss'
 import key from '../config/config'
 import Image from 'next/image'
 
-// const imgSite = 'http://image.tmdb.org/t/p/w500/'
-
 export async function getStaticProps() {
   const res = await fetch(
     `http://api.themoviedb.org/3/movie/top_rated?api_key=${key}`
@@ -48,29 +46,3 @@ function Movies({ movies }) {
 }
 
 export default Movies
-
-// export async function getStaticProps(context) {
-//   const response = await fetch(
-//     `http://api.themoviedb.org/3/movie/top_rated?api_key=${key}`
-//   )
-//   const movies = await response.json()
-//   // console.log(movies)
-//   const data = movies.results
-//   const imgUrl = movies.results[1].backdrop_path
-
-//   return {
-//     props: { data }, // will be passed to the page component as props
-//   }
-// }
-
-// const Users = ({ data }) => {
-//   return (
-//     <Container keywords={'users ism4t'}>
-//       <div className={styles.users}>
-//         <ul> {JSON.stringif(imgUrl)} </ul>
-//       </div>
-//     </Container>
-//   )
-// }
-
-// export default Users
