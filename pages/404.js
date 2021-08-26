@@ -17,9 +17,7 @@ export default function Error() {
           />
 
           <Link href='https://t.me/ism4t'>Developer</Link>
-          <Link href='https://stackoverflow.com/' passHref={true}>
-            StackOverflow
-          </Link>
+          <Link href='https://github.com/1smat'>Github</Link>
 
           <Image className={styles.img} src={logo} height={600} width={1000} />
         </div>
