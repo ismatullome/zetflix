@@ -20,7 +20,8 @@ const MainContainer = ({ children, keywords, title = 'Zetflix.app' }) => {
           </Link>
           <Linker href={'/top-rated'} text='Top rated' />
           <Linker href={'/popular'} text='Popular' />
-          <Linker href={'/contact'} text='Связь с нами' />
+          <Linker href={'/contact'} text='Contact' />
+          <Linker href={'/кудато'} text='Левый сайт' />
         </div>
       </div>
       <div>{children}</div>
