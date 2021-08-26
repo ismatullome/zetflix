@@ -16,9 +16,9 @@ export default function Error() {
             text='Вернуть главную страницу'
           />
 
-          <Link href='https:/t.me/ism4t'>Developer</Link>
-          <Link href='https:/t.me/ism4t/' passHref={true}>
-            <a>stack</a>
+          <Link href='https://t.me/ism4t'>Developer</Link>
+          <Link href='https://stackoverflow.com/' passHref={true}>
+            <Button>StackOverflow</Button>
           </Link>
 
           <Image className={styles.img} src={logo} height={600} width={1000} />
