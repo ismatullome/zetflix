@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import Container from '../../components/Container'
 import styles from '../../styles/id.module.scss'
 import key from '../../config/config'
+import Iframe from 'react-iframe'
 
 export async function getServerSideProps() {
   const res = await fetch(
@@ -14,6 +15,7 @@ export async function getServerSideProps() {
 
 export default function Movieid(movies) {
   const query = useRouter()
+
   let videoKey = null
   const getVideo = async () => {
     const data2 = await fetch(
@@ -21,7 +23,9 @@ export default function Movieid(movies) {
     )
     const video = await data2.json()
     videoKey = video.results[0].key
-    console.log(videoKey)
+    query.query.key = videoKey
+    // console.log(query)
+    // console.log(videoKey)
   }
   getVideo()
 
@@ -43,26 +47,24 @@ export default function Movieid(movies) {
                 src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                 alt=''
               />
-              {/* <iframe
-                width='560'
-                height='315'
-                src={`https://youtube.com/watch?v=${videoKey}`}
-                title='YouTube video player'
-                frameborder='0'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowfullscreen></iframe> */}
-
-              <video
-                width='560'
-                height='315'
-                src={`https://youtube.com/embed/${videoKey}?showinfo=0`}
-                frameborder='0'
-                allowfullscreen></video>
+              {console.log(query.query.key + '  client')}
             </>
           ) : (
             <></>
           )
         })}
+
+        <Iframe
+          wait={4000}
+          url={`https://www.youtube.com/embed/${query.query.key}`}
+          width='450px'
+          height='450px'
+          id='myId'
+          className='myClassname'
+          display='initial'
+          position='relative'
+          frameBorder='0'
+        />
       </div>
     </Container>
   )
