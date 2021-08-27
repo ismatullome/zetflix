@@ -14,6 +14,16 @@ export async function getServerSideProps() {
 
 export default function Movieid(movies) {
   const query = useRouter()
+  let videoKey = null
+  const getVideo = async () => {
+    const data2 = await fetch(
+      `https://api.themoviedb.org/3/movie/${query.query.id}/videos?api_key=${key}`
+    )
+    const video = await data2.json()
+    videoKey = video.results[0].key
+    console.log(videoKey)
+  }
+  getVideo()
 
   return (
     <Container>
@@ -33,6 +43,21 @@ export default function Movieid(movies) {
                 src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                 alt=''
               />
+              {/* <iframe
+                width='560'
+                height='315'
+                src={`https://youtube.com/watch?v=${videoKey}`}
+                title='YouTube video player'
+                frameborder='0'
+                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                allowfullscreen></iframe> */}
+
+              <video
+                width='560'
+                height='315'
+                src={`https://youtube.com/embed/${videoKey}?showinfo=0`}
+                frameborder='0'
+                allowfullscreen></video>
             </>
           ) : (
             <></>
