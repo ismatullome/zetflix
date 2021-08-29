@@ -39,11 +39,43 @@ export default function Movieid(movies) {
     )
     const video = await data2.json()
     console.log(video)
-    const vKey = video.results[0].key
-    setVideokey(vKey)
-
-    console.log(videokey)
+    if (video.results[0] === undefined) {
+      setVideokey(video.results[0])
+    } else {
+      const vKey = video.results[0].key
+      setVideokey(vKey)
+    }
   }, [])
+
+  if (!videokey) {
+    return (
+      <Container>
+        <div className={styles.container}>
+          {movies.data.results.map((movie) => {
+            return movie.id == query.query.id ? (
+              <>
+                <h1> Movie id: {query.query.id} </h1>
+                <h1>
+                  {movie.original_title} ({movie.release_date}) watch online!{' '}
+                </h1>
+                <h2> {movie.title} </h2>
+                <p> {movie.overview} </p>
+                <h3>Vote average : {movie.vote_average} </h3>
+                <h3> Vote count: {movie.vote_count} </h3>
+                <img
+                  src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                  alt=''
+                />
+                {console.log(query.query.key + '  client')}
+              </>
+            ) : (
+              <></>
+            )
+          })}
+        </div>
+      </Container>
+    )
+  }
 
   if (videokey) {
     query.query.key = videokey
@@ -73,18 +105,18 @@ export default function Movieid(movies) {
             <></>
           )
         })}
+        <Iframe
+          key={query.query.key}
+          url={`https://www.youtube.com/embed/${query.query.key}`}
+          width='450px'
+          height='450px'
+          id='myId'
+          className='myClassname'
+          display='initial'
+          position='relative'
+          frameBorder='0'
+        />
       </div>
-      <Iframe
-        key={query.query.key}
-        url={`https://www.youtube.com/embed/${query.query.key}`}
-        width='450px'
-        height='450px'
-        id='myId'
-        className='myClassname'
-        display='initial'
-        position='relative'
-        frameBorder='0'
-      />
     </Container>
   )
 }
