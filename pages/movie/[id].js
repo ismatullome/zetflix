@@ -43,7 +43,6 @@ export default function Movieid(movies) {
     setVideokey(vKey)
 
     console.log(videokey)
-    // }
   }, [])
 
   if (videokey) {
