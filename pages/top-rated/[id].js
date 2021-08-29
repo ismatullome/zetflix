@@ -2,6 +2,8 @@ import { useRouter } from 'next/router'
 import Container from '../../components/Container'
 import styles from '../../styles/id.module.scss'
 import key from '../../config/config'
+import Iframe from 'react-iframe'
+import { useState, useEffect } from 'react'
 
 export async function getServerSideProps() {
   const res = await fetch(
@@ -13,6 +15,22 @@ export async function getServerSideProps() {
 }
 export default function Movieid(movies) {
   const query = useRouter()
+
+  const [videokey, setVideokey] = useState()
+
+  useEffect(async function loadVideo() {
+    const data2 = await fetch(
+      `https://api.themoviedb.org/3/movie/${query.query.id}/videos?api_key=${key}`
+    )
+    const video = await data2.json()
+    console.log(video)
+    const vKey = video.results[0].key
+    setVideokey(vKey)
+  }, [])
+
+  if (videokey) {
+    query.query.key = videokey
+  }
 
   return (
     <Container>
@@ -39,6 +57,17 @@ export default function Movieid(movies) {
           )
         })}
       </div>
+      <Iframe
+        key={query.query.key}
+        url={`https://www.youtube.com/embed/${query.query.key}`}
+        width='450px'
+        height='450px'
+        id='myId'
+        className='myClassname'
+        display='initial'
+        position='relative'
+        frameBorder='0'
+      />
     </Container>
   )
 }
