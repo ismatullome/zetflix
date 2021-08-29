@@ -19,7 +19,7 @@ export default function Movieid(movies) {
   return (
     <>
       <Container>
-        <div className={styles.container}>
+        <div className={styles.container} key='key'>
           {movies.data.results.map((movie) => {
             return movie.id == query.query.id ? (
               <>

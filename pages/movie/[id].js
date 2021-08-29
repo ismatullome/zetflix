@@ -3,6 +3,7 @@ import Container from '../../components/Container'
 import styles from '../../styles/id.module.scss'
 import key from '../../config/config'
 import Iframe from 'react-iframe'
+import { useEffect, useState } from 'react'
 
 export async function getServerSideProps() {
   const res = await fetch(
@@ -10,24 +11,44 @@ export async function getServerSideProps() {
   )
   const data = await res.json()
 
+  // const getVideo = async () => {
+  //   const query = useRouter()
+
+  //   const data2 = await fetch(
+  //     `https://api.themoviedb.org/3/movie/${query.query.id}/videos?api_key=${key}`
+  //   )
+  //   const video = await data2.json()
+  //   videoKey = video.results[0].key
+  //   console.log(query)
+  //   // console.log(query)
+  //   // console.log(videoKey)
+  // }
+  // getVideo()
+
   return { props: { data } }
 }
 
 export default function Movieid(movies) {
   const query = useRouter()
 
-  let videoKey = null
-  const getVideo = async () => {
+  const [videokey, setVideokey] = useState()
+
+  useEffect(async function loadVideo() {
     const data2 = await fetch(
       `https://api.themoviedb.org/3/movie/${query.query.id}/videos?api_key=${key}`
     )
     const video = await data2.json()
-    videoKey = video.results[0].key
-    query.query.key = videoKey
-    // console.log(query)
-    // console.log(videoKey)
+    console.log(video)
+    const vKey = video.results[0].key
+    setVideokey(vKey)
+
+    console.log(videokey)
+    // }
+  }, [])
+
+  if (videokey) {
+    query.query.key = videokey
   }
-  getVideo()
 
   return (
     <Container>
@@ -41,7 +62,7 @@ export default function Movieid(movies) {
               </h1>
               <h2> {movie.title} </h2>
               <p> {movie.overview} </p>
-              <h3> Vote average : {movie.vote_average} </h3>
+              <h3>Vote average : {movie.vote_average} </h3>
               <h3> Vote count: {movie.vote_count} </h3>
               <img
                 src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
@@ -53,19 +74,18 @@ export default function Movieid(movies) {
             <></>
           )
         })}
-
-        <Iframe
-          wait={4000}
-          url={`https://www.youtube.com/embed/${query.query.key}`}
-          width='450px'
-          height='450px'
-          id='myId'
-          className='myClassname'
-          display='initial'
-          position='relative'
-          frameBorder='0'
-        />
       </div>
+      <Iframe
+        key={query.query.key}
+        url={`https://www.youtube.com/embed/${query.query.key}`}
+        width='450px'
+        height='450px'
+        id='myId'
+        className='myClassname'
+        display='initial'
+        position='relative'
+        frameBorder='0'
+      />
     </Container>
   )
 }
