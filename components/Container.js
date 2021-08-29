@@ -5,6 +5,7 @@ import Head from 'next/head'
 import styles from '../styles/Container.module.scss'
 import logo from '../public/logo.png'
 import favicon from '../public/favicon.ico'
+
 const MainContainer = ({ children, keywords, title = 'Zetflix.app' }) => {
   return (
     <>
