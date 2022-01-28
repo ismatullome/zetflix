@@ -1,1 +1,1 @@
-# test-app
+# Netflix clone with Next.js :3
